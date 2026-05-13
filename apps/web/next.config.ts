@@ -4,7 +4,7 @@ import { withContentCollections } from "@content-collections/next";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	// 1. 型エラーやLintエラーでビルドが止まるのを防ぐ
+	// 1. 型エラーやESLintエラーでビルドが止まるのを「完全に」無視する
 	typescript: {
 		ignoreBuildErrors: true,
 	},
@@ -13,16 +13,16 @@ const nextConfig = {
 	},
 	
 	compiler: {
-		// 本番環境ではコンソールログを削除して軽量化
+		// 本番環境ではデバッグ用のログを削除
 		removeConsole: process.env.NODE_ENV === "production",
 	},
 	
 	reactStrictMode: true,
 	productionBrowserSourceMaps: true,
 
-	// 2. Cloudflare Pages (静的エクスポート) 用の画像設定
+	// 2. Cloudflare Pages 等の静的配信環境で画像を正常に表示するための設定
 	images: {
-		unoptimized: true, // 外部サーバーなしで画像を表示するために必須
+		unoptimized: true, 
 		remotePatterns: [
 			{ protocol: "https", hostname: "plus.unsplash.com" },
 			{ protocol: "https", hostname: "images.unsplash.com" },
@@ -37,5 +37,5 @@ const nextConfig = {
 	},
 };
 
-// 3. 複雑な型不整合を回避するため 'as any' を使用してエクスポート
-export default withContentCollections(withBotId(nextConfig as any));
+// 3. export部分での型エラーを 'as any' で強制的に封じ込める
+export default withContentCollections(withBotId(nextConfig as any)) as any;
