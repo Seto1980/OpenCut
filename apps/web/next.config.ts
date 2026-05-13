@@ -15,3 +15,4 @@ const nextConfig = {
 
 // ここで (as any) を使い、エラーを強制スルーさせます
 export default (withContentCollections as any)((withBotId as any)(nextConfig as any));
+　
