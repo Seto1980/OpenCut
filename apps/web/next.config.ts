@@ -2,16 +2,9 @@
 import { withBotId } from "botid/next/config";
 import { withContentCollections } from "@content-collections/next";
 
-/**
- * 型定義の競合を完全に無視してビルドを成功させるための最終構成
- */
 const nextConfig = {
-	typescript: {
-		ignoreBuildErrors: true,
-	},
-	eslint: {
-		ignoreDuringBuilds: true,
-	},
+	typescript: { ignoreBuildErrors: true },
+	eslint: { ignoreDuringBuilds: true },
 	compiler: {
 		removeConsole: process.env.NODE_ENV === "production",
 	},
@@ -33,5 +26,4 @@ const nextConfig = {
 	},
 };
 
-// 型の不整合によるエラーを as any で力技でスキップ
 export default (withContentCollections as any)((withBotId as any)(nextConfig as any));
