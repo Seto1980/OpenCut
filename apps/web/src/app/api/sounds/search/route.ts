@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+// 
 import { webEnv } from "@/env/web";
 import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
