@@ -2,9 +2,10 @@ import { SITE_URL } from "@/site/brand";
 import { getPosts } from "@/blog/query";
 import type { MetadataRoute } from "next";
 
+export const dynamic = 'force-static';
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const data = await getPosts();
-
 	const postPages: MetadataRoute.Sitemap =
 		data?.posts?.map((post) => ({
 			url: `${SITE_URL}/blog/${post.slug}`,
@@ -12,7 +13,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			changeFrequency: "weekly",
 			priority: 0.8,
 		})) ?? [];
-
 	return [
 		{
 			url: SITE_URL,
