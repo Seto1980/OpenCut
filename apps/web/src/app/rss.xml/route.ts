@@ -1,3 +1,4 @@
+export const dynamic = 'force-static';
 import { Feed } from "feed";
 import { getPosts } from "@/blog/query";
 import { SITE_INFO, SITE_URL } from "@/site/brand";
