@@ -1,7 +1,7 @@
 // @ts-nocheck
+// trigger build 2026-05-14
 import { withBotId } from "botid/next/config";
 import { withContentCollections } from "@content-collections/next";
-
 const nextConfig = {
   typescript: { ignoreBuildErrors: true },
   eslint: { ignoreDuringBuilds: true },
@@ -12,5 +12,4 @@ const nextConfig = {
     remotePatterns: [{ protocol: "https", hostname: "**" }],
   },
 };
-
 export default withContentCollections(withBotId(nextConfig));
