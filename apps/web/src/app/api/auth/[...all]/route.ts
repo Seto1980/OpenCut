@@ -1,3 +1,4 @@
+export const dynamic = 'force-static';
 import { auth } from "@/auth/server";
 import { toNextJsHandler } from "better-auth/next-js";
 
